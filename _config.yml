@@ -82,4 +82,11 @@ deploy:
   repo: git@github.com:SuperSuperSpace/SuperSuperSpace.github.io.git
   branch: master
 
+# search
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+
   
