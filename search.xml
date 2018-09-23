@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title></title>
+    <url>%2F2018%2F09%2F23%2Ftest%2F</url>
+    <content type="text"><![CDATA[12]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Otsu算法]]></title>
+    <url>%2F2018%2F06%2F02%2FOtsu%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[背景：最大类间方差法是日本学者大津于1979年提出的，是一种自适应阈值确定的方法，又叫大津法，简称Otsu，是一种基于全局的二值化算法。 原理：Otsu算法是根据图像的灰度特性，将图像分为前景和背景两个部分，当取最佳阈值时，两部分之间的差别应是最大的，在Otsu算法中衡量这个差别的标准就是较为常见的最大类间方差。前景和背景之间的类间方差如果越大，说明构成图像的两个部分之间的差别越大，当部分目标被错分为背景或部分背景被错分为目标，将会导致这两个部分差别变小，当所取阈值的分割使类间方差最大时就意味着错分概率为最小。 记 ： ①T为前景与背景的分割阈值②W₀为前景像素点数占图像比例③U₀为前景像素平均灰度④W₁为背景像素点数占图像比例⑤U₁为背景像素平均灰度⑥U为图像总平均灰度 则有： U = W₀ X U₀ + W₁ X U₁ g = W₀ X (U₀ - U)² + W₁ X (U₁ - U)² 结合上面两式可得： g = W₀ X W₁ X(U₀ - U₁)² 或 g = W₀ / 1 - W₀ X (U₀ - U)² 当方差g最大时，可以认为此时前景和背景差异最大，此时的灰度T是最佳阈值。类间方差法对噪声以及目标大小十分敏感，它仅对类间方差为单峰的图像有较好的分割效果。如果光照不均，反光或者背景复杂等因素影响，类间方差可能呈现双峰或多峰，此时效果不理想。 参考链接：http://blog.csdn.net/u011285477/article/details/52004513]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[凸包]]></title>
+    <url>%2F2018%2F06%2F02%2F%E5%87%B8%E5%8C%85%2F</url>
+    <content type="text"><![CDATA[凸包（Convex Hull）是一个计算几何（图形学）中的概念。 在一个实数向量空间V中，对于给定集合X，所有包含X的凸集的交集S被称为X的凸包。X的凸包可以用X内所有点(X1，…Xn)的凸组合来构造.在二维欧几里得空间中，凸包可想象为一条刚好包著所有点的橡皮圈。用不严谨的话来讲，给定二维平面上的点集，凸包就是将最外层的点连接起来构成的凸多边型，它能包含点集中所有的点 参考：https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[凸缺陷]]></title>
+    <url>%2F2018%2F06%2F02%2F%E5%87%B8%E7%BC%BA%E9%99%B7%2F</url>
+    <content type="text"><![CDATA[如上图所示，黑色的轮廓线为convexity hull, 而convexity hull与手掌之间的部分为convexity defects，即凸缺陷. 每个convexity defect区域有四个特征量：起始点（startPoint），结束点(endPoint)，距离convexity hull最远点(farPoint)，最远点到convexity hull的距离(depth)。]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[交叉编译Qt移植到OrangePI]]></title>
+    <url>%2F2018%2F06%2F02%2F%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91Qt%E7%A7%BB%E6%A4%8D%E5%88%B0OrangePI%2F</url>
+    <content type="text"><![CDATA[简介：交叉编译Qt5.5移植到OrangePI Prime上 （1）启动和配置Orange PI1.先用SD Card Formatter将Tf卡格式化2.使用Win32DiskImager将Debian_Desktop_Prime镜像烧进Tf卡中3.将Tf卡插进OrangePI卡槽，用HDMI线接显示器，再接通电源，等待系统启动4.进入登录界面，输入账户密码，默认都是orangepi5.设置好网络，可连接wifi或者插网线6.打开终端，输入sudo nano /etc/apt/sources.list,将原来的内容加#注释，并加入以下内容（中科大镜像源）：deb http://mirrors.ustc.edu.cn/debian stable main contrib non-freedeb http://mirrors.ustc.edu.cn/debian stable-updates main contrib non-free7.在终端输入 sudo apt-get install debian-keyring debian-archive-keyring 再输入sudo apt-key update8.输入sudo apt-get install apt-transport-https（可解决有些源更新不了的问题）9.输入sudo apt-get update10.输入./getlib.sh，等待库的安装完成（安装期间会出现询问选项，需要输入y继续）11.输入./gettslib.sh至此，Orange PI的基本配置已经完成 （2）PC端的配置及交叉编译qt流程1.先安装debian系统，可以用单独一台主机或者VMware来实现安装，镜像放在img文件夹中2.登入debian系统，将之前配置下载好库的Orange PI的Tf卡拔出，插进读卡器后连通PC端3.查看Tf卡是否挂载成功，查询Tf的挂载路径，我的路径是/media/haxan/rootfs，然后打开pkg_config.sh进行路径修改，注意：如果地址有误，会影响卡上系统库的链接。4.运行pkg_config.sh（如果后续的配置出现库链接失败，或者头文件找不到的问题，可尝试直接在终端输入pkg_config.sh的内容）5.解压qt-everywhere-opensource-src-5.5.0.tar.gz,复制arm-linux文件夹到/qt-everywhere-opensource-src-5.5.0/qtbase/mkspace/6.复制Tf卡上的/lib/aarch64-linux-gnu/到pc上的/lib上7.运行comqmake.sh脚本8.cd 进 /qt-everywhere-opensource-src-5.5.0/qtbase,运行make -j8(八线程编译，根据具体电脑配置来选择)9.编译成功后，输入sudo make install安装成功后，会有/usr/local/qt5pi1以及/media/haxan/rootfs/usr/local/qt5pi1, 至此，qt5.5安装完成9.修改pc机的/usr/lib/x86_64-linux-gun/qt-default/qtchooser/default.conf,修改第一行为/usr/local/qt5pi1/bin注意事项：如果之前编译失败，之后重新修改配置，最好是把源码文件夹删掉，再重新解压源码包 （3）板子的程序运行1.将Tf卡放回Orange PI上，执行export LD_LIBRARY_PATH=/lib/tslib/lib:$LD_LIBRARY_PATH2.之后要在pc端上交叉编译时，需要把Tf卡插回PC，不然找不到qt库 （4）tslib的问题export QT_QPA_EGLFS_DISABLE_INPUT=1 # 屏蔽eglfs内置输入export TSLIB_ROOT=/lib/tslib # 指定tslib主目录位置export TSLIB_TSDEVICE=/dev/input/touchscreen0 # 指定触摸屏设备export TSLIB_CONFILE=$TSLIB_ROOT/etc/ts.conf # 指定TSLIB配置文件的位置export TSLIB_PLUGINDIR=$TSLIB_ROOT/lib/ts # 指定触摸屏插件所在路径export TSLIB_FBDEVICE=/dev/fb0 # 指定帧缓冲设备export TSLIB_CONSOLEDEVICE=none # 设定控制台设备为none,否则默认为/dev/tty，,这样会出现”open consol device:No such file or directory KD…..”的错误export LD_LIBRARY_PATH=/lib/tslib/lib:$LD_LIBRARY_PATH # 指定TSLIB的库文件路径export QWS_MOUSE_PROTO=tslib:/dev/input/touchscreen0 # 指定触摸屏设备]]></content>
+      <tags>
+        <tag>Qt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV实现试管缺陷识别]]></title>
+    <url>%2F2018%2F06%2F01%2FOpenCV%E5%AE%9E%E7%8E%B0%E8%AF%95%E7%AE%A1%E7%BC%BA%E9%99%B7%E8%AF%86%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[试管定位思路流程： 1、获取原图像，通过亮度，对比度，颜色空间转换等图像预处理，获得边缘明显的试管图像2、通过边缘查找函数，找出图像中所有边缘3、设置边缘面积范围条件，通过遍历筛选出符合试管面积的轮廓4、找到这些试管轮廓的凸包5、得到凸包形成的外矩形6、至此试管的大致位置便可以确认了 试管长短判断： 1、根据前面工作获取的试管外矩形，可以很容易提取出外矩形的高度（试管在摄像头成像里是竖着放的）2、根据试管大概的长度，设置一个合适的范围3、对不在该范围内的试管进行标记 试管口缺陷判断： 1、通过膨胀操作加强裂痕高亮部分2、选取包含试管口四周的区域，算出其平均像素值3、与标准像素值进行比较，对不符合的试管进行标记4、目前试管口缺陷检测健壮性较差，对缺陷裂痕在中间位置检测效果较好，但如果在侧边的话，效果很不理想 更新：目前试管口缺陷在边缘处也可检测到，主要思路还是计算平均像素值，但是加入了极值像素值剔除条件。目前能初步检测但需要检测需要特定环境 点击下载项目]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[基于OpenCV的图像矫正]]></title>
+    <url>%2F2018%2F06%2F01%2F%E5%9F%BA%E4%BA%8EOpenCV%E7%9A%84%E5%9B%BE%E5%83%8F%E7%9F%AB%E6%AD%A3%2F</url>
+    <content type="text"><![CDATA[简介：该项目是基于Qt开发环境，使用OpenCV库实现了透视变换矫正以及霍夫圆检测定位 矫正思路： 1、先对原图像进行白平衡，对比度和亮度调节等预处理2、使用opencv中的透视变换来矫正图像3、矫正完图像后，通过霍夫圆变换来确认圆的位置从而进行定位 使用步骤： 1、查找打开指定图片，注：目前只能打开指定文件夹（pic）内的图片，因为如果是其它无法找到边缘的图片，程序将会异常退出；2、点击加载按钮，触发打开三个窗口，分别是原图像，边缘图像，目标图像（透视变化后图像）；3、通过调节亮度和对比度等参数，矫正目标图像；4、确认目标图像无误后，点击确认矫正按钮，将会进入霍夫圆检测环节5、通过调节对比度和亮度，确认圆的位置 点击下载项目]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[OpenCV实现试管头缺陷识别]]></title>
+    <url>%2F2018%2F06%2F01%2FOpenCV%E5%AE%9E%E7%8E%B0%E8%AF%95%E7%AE%A1%E5%A4%B4%E7%BC%BA%E9%99%B7%E8%AF%86%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[环境：Qt5.6.2、OpenCV3.3 初始化，第一次执行时： 1、给定塑料头过孔背景的颜色，如白色2、用OpenCV中的霍夫圆检测定位圆形塑料头的位置，找出圆心3、根据圆心定义一个区域，把该区域作为标准区域4、求出标准区域的平均灰度值，将该值作为标准灰度值5、将标准区域和标准灰度值保存，作为后续工作的判断比较条件 程序再次执行时： 1、用OpenCV中的霍夫圆检测定位圆形塑料头的位置，找出圆心2、载入标准区域，然后计算该区域中的平均灰度值3、将得到的平均灰度值与标准灰度值比较4、通过两值的差别来判断是否有过孔阻塞 点击下载项目]]></content>
+      <tags>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Qt和FFmpeg实现播放器---环境搭建]]></title>
+    <url>%2F2018%2F05%2F31%2FQt%E5%92%8CFFmpeg%E5%AE%9E%E7%8E%B0%E6%92%AD%E6%94%BE%E5%99%A8---%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[简介：我是在Win10 64位系统下，使用的是Qt 5.6.1版本 和FFmpeg 3.4.2版本 之前根据网上教程搭建环境，在链接库这里一直失败，后来将FFmpeg从64位版本换成32位版本，编译链接就通过了，具体原因还不清楚 搭建流程如下： 1、先在https://ffmpeg.zeranoe.com/builds/下载win32位的dev和shared2、分别解压，复制dev的lib和include地址加入qt的.pro文件中，类似： INCLUDEPATH += $$PWD\ffmpeg_dev\includeLIBS += G:\document\zhd\qt_project\FFmpeg\ffmpeg_dev\lib\lib*.dll.a 3、在系统环境变量中加入shared文件夹中bin路径4、创建一个纯C++项目，测试搭建是否成功，因为FFmpeg是C实现的，所以需要加上extern ”C“来调用头文件 测试代码如下：123456789101112131415161718#include &lt;iostream&gt;using namespace std;extern "C"&#123;#include "libavcodec/avcodec.h"#include "libavformat/avformat.h"#include "libswscale/swscale.h"#include "libavdevice/avdevice.h"&#125;int main()&#123; cout&lt;&lt;"Hello FFmpeg"&lt;&lt;endl; av_register_all(); unsigned version = avcodec_version(); cout&lt;&lt;"version is:"&lt;&lt;version; return 0;&#125;]]></content>
+      <tags>
+        <tag>Qt</tag>
+        <tag>FFmpeg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[STM32实现PWM]]></title>
+    <url>%2F2018%2F05%2F31%2FSTM32%E5%AE%9E%E7%8E%B0PWM%2F</url>
+    <content type="text"><![CDATA[简介：PWM，全称 Pulse Width Modulation，即脉冲宽度调制本次，实验是通过配置stm32f103c8中的PB5引脚来输出PWM的 配置流程如下： 1、初始化GPIO2、初始化定时器3、设置TIM3_CH2的PWM模式，使能TIM3的CH输出4、使能定时器 遇到问题及解决： 程序烧写进开发板无现象，原因：暂未找到原因，怀疑是boot启动问题。换了一块开发板，能得到正常现象 没有得到PWM波形，原因：配置不正确，没有正确初始化GPIO，我这里是少了个重映射，也没有使能定时器 呼吸灯闪烁速率太快，原因：分频设置有问题，改为0 配置多个PWM时，如果配置部分映射模式，会出现其中一个引脚无法输出PWM波形，原因：原因暂不清楚，改成完全映射模式即可单个PWM代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include "stm32f10x.h"#define LED_ON GPIO_SetBits(GPIOA, GPIO_Pin_1);#define LED_OFF GPIO_ResetBits(GPIOA, GPIO_Pin_1);void delay(uint32_t t)&#123; uint16_t i; while(t--) for(i = 0; i &lt; 1000; i++);&#125;//GPIO初始化void gpio_init()&#123; GPIO_InitTypeDef GPIO_InitStructure1, GPIO_InitStructure2; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE); //使能GPIOB引脚，使能AFIO时钟（定时器3通道2需要重映射到PB5引脚） GPIO_InitStructure1.GPIO_Pin = GPIO_Pin_5; //PB5引脚 GPIO_InitStructure1.GPIO_Speed = GPIO_Speed_50MHz; //速率配置为50MHz GPIO_InitStructure1.GPIO_Mode = GPIO_Mode_AF_PP; //复用推挽功能 GPIO_Init(GPIOB, &amp;GPIO_InitStructure1); //初始化GPIOB端口 GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3, ENABLE); //重映射 /*GPIO_InitStructure2.GPIO_Pin = GPIO_Pin_1; GPIO_InitStructure2.GPIO_Speed = GPIO_Speed_50MHz; GPIO_InitStructure2.GPIO_Mode = GPIO_Mode_Out_PP; GPIO_Init(GPIOA, &amp;GPIO_InitStructure2); GPIO_ResetBits(GPIOA, GPIO_Pin_1);*/ &#125;//定时器初始化void timer_init()&#123; TIM_TimeBaseInitTypeDef tim; //定义定时器初始化结构体 RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); //使能定时器3 tim.TIM_Period = 19999; //自动重装载寄存器的值 tim.TIM_Prescaler = 0; //TIMX预分频的值，设为0表示不分频 tim.TIM_ClockDivision = 0; //时钟分割 tim.TIM_CounterMode = TIM_CounterMode_Up; //向上计数 TIM_TimeBaseInit(TIM3, &amp;tim); //对定时器进行初始化&#125;//设置TIM_CH2的PWM模式，使能TIM的CH2输出void pwm_init()&#123; TIM_OCInitTypeDef TIM_OCInitStructure; //定义结构体 TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2; //选择定时器模式，PWM模式2 TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能 TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; //输出比较极性高 TIM_OC2Init(TIM3, &amp;TIM_OCInitStructure); //初始化定时器模式 TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable); //使能定时器在CCR2上的预装载值&#125;int main()&#123; int i; gpio_init(); timer_init(); pwm_init(); TIM_Cmd(TIM3,ENABLE); //使能定时器TIM3 while(1) &#123; for(i = 19999; i &gt; 0; i--) &#123; delay(1); TIM_SetCompare2(TIM3, i); &#125; for(i = 0; i &lt; 19999; i++) &#123; delay(1); TIM_SetCompare2(TIM3, i); &#125; &#125;&#125; 多个PWM代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116#include "stm32f10x.h"#include "func.h"void delay(uint32_t t)&#123; uint16_t i; while(t--) for(i = 0; i &lt; 1000; i++);&#125;int KEY_Scan(int SW)&#123; static unsigned char key_up = 1; if(key_up &amp;&amp; (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0) == 0)) &#123; delay(200); key_up = 0; if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0) == 0) &#123; if(SW != 1) SW = 1; else SW = 2; &#125; /*if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0) == 0) &#123; if(SW != 1 &amp;&amp; SW != 0) SW = 1; else SW = 2; &#125; else SW = 0;*/ &#125; else if(key_up &amp;&amp; (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1) == 0)) &#123; delay(200); key_up = 0; if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_1) == 0) &#123; if(SW != 3) SW = 3; else SW = 4; &#125; &#125; else &#123; SW = 0; key_up = 1; &#125; return SW;&#125;void gpio_init(void)&#123; GPIO_InitTypeDef GPIO_InitStructure1; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC | RCC_APB2Periph_AFIO, ENABLE); GPIO_InitStructure1.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7; GPIO_InitStructure1.GPIO_Speed = GPIO_Speed_50MHz; GPIO_InitStructure1.GPIO_Mode = GPIO_Mode_AF_PP; GPIO_Init(GPIOC, &amp;GPIO_InitStructure1); GPIO_PinRemapConfig(GPIO_FullRemap_TIM3, ENABLE); /*GPIO_InitStructure2.GPIO_Pin = GPIO_Pin_1; GPIO_InitStructure2.GPIO_Speed = GPIO_Speed_50MHz; GPIO_InitStructure2.GPIO_Mode = GPIO_Mode_Out_PP; GPIO_Init(GPIOA, &amp;GPIO_InitStructure2); GPIO_ResetBits(GPIOA, GPIO_Pin_1);*/ &#125;void key_init(void)&#123; GPIO_InitTypeDef GPIO_KEY; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); GPIO_KEY.GPIO_Mode = GPIO_Mode_IPU; GPIO_KEY.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1; GPIO_KEY.GPIO_Speed = GPIO_Speed_50MHz; GPIO_Init(GPIOA, &amp;GPIO_KEY);&#125;void timer_init(void)&#123; TIM_TimeBaseInitTypeDef tim; RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); tim.TIM_Period = 999; tim.TIM_Prescaler = 719; tim.TIM_ClockDivision = 0; tim.TIM_CounterMode = TIM_CounterMode_Up; TIM_TimeBaseInit(TIM3, &amp;tim);&#125;void pwm_init(void)&#123; TIM_OCInitTypeDef TIM_OCInitStructure; TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2; TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; TIM_OC1Init(TIM3, &amp;TIM_OCInitStructure); TIM_OC1PreloadConfig(TIM3, TIM_OCPreload_Enable); TIM_OC2Init(TIM3, &amp;TIM_OCInitStructure); TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);&#125; 用STM32的按键控制机械臂，代码如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129代码：#include "stm32f10x.h"#define LED_ON GPIO_SetBits(GPIOA, GPIO_Pin_1);#define LED_OFF GPIO_ResetBits(GPIOA, GPIO_Pin_1);void delay(uint32_t t)&#123; uint16_t i; while(t--) for(i = 0; i &lt; 1000; i++);&#125;int KEY_Scan(int SW)&#123; static unsigned char key_up = 1; if(key_up &amp;&amp; (GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0) == 0)) &#123; delay(200); key_up = 0; if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0) == 0) &#123; if(SW != 1 &amp;&amp; SW != 0) SW = 1; else SW = 2; &#125; else SW = 0; &#125; else &#123; SW = 0; key_up = 1; &#125; return SW;&#125;void gpio_init()&#123; GPIO_InitTypeDef GPIO_InitStructure1, GPIO_InitStructure2; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE); GPIO_InitStructure1.GPIO_Pin = GPIO_Pin_5; GPIO_InitStructure1.GPIO_Speed = GPIO_Speed_50MHz; GPIO_InitStructure1.GPIO_Mode = GPIO_Mode_AF_PP; GPIO_Init(GPIOB, &amp;GPIO_InitStructure1); GPIO_PinRemapConfig(GPIO_PartialRemap_TIM3, ENABLE); /*GPIO_InitStructure2.GPIO_Pin = GPIO_Pin_1; GPIO_InitStructure2.GPIO_Speed = GPIO_Speed_50MHz; GPIO_InitStructure2.GPIO_Mode = GPIO_Mode_Out_PP; GPIO_Init(GPIOA, &amp;GPIO_InitStructure2); GPIO_ResetBits(GPIOA, GPIO_Pin_1);*/ &#125;void key_init()&#123; GPIO_InitTypeDef GPIO_KEY; RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); GPIO_KEY.GPIO_Mode = GPIO_Mode_IPU; GPIO_KEY.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1; GPIO_KEY.GPIO_Speed = GPIO_Speed_50MHz; GPIO_Init(GPIOA, &amp;GPIO_KEY);&#125;void timer_init()&#123; TIM_TimeBaseInitTypeDef tim; RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE); tim.TIM_Period = 999; tim.TIM_Prescaler = 719; tim.TIM_ClockDivision = 0; tim.TIM_CounterMode = TIM_CounterMode_Up; TIM_TimeBaseInit(TIM3, &amp;tim);&#125;void pwm_init()&#123; TIM_OCInitTypeDef TIM_OCInitStructure; TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2; TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; TIM_OC2Init(TIM3, &amp;TIM_OCInitStructure); TIM_OC2PreloadConfig(TIM3, TIM_OCPreload_Enable);&#125;int main()&#123; int i; int key, SW; gpio_init(); key_init(); timer_init(); pwm_init(); TIM_Cmd(TIM3,ENABLE); while(1) &#123; key = KEY_Scan(SW); if(key == 1) &#123; for(i = 740; i &lt; 930; i++) &#123; delay(10); TIM_SetCompare2(TIM3, i); &#125; key = 0; SW = 1; &#125; else if(key == 2) &#123; for(i = 930; i &gt; 740; i--) &#123; delay(10); TIM_SetCompare2(TIM3, i); &#125; key = 0; SW = 2; &#125; &#125;&#125;]]></content>
+      <tags>
+        <tag>STM32</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用C实现菱形输出]]></title>
+    <url>%2F2018%2F05%2F30%2F%E7%94%A8C%E5%AE%9E%E7%8E%B0%E8%8F%B1%E5%BD%A2%E8%BE%93%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[思路：将菱形分为上下部分来处理，然后先输出空格，再输出符号 具体流程如下： 一、确认菱形上半部分1、先确定菱形上半部分的行数，作为外循环2、内循环，先输出空格3、同上一级内循环，再输出符号 二、确定菱形下半部分1、确定菱形下半部分行数，作为外循环2、内循环，先输出空格3、同上级内循环，再输出符号 下面来分析下代码中关键的几个循环:首先是菱形上半部1for(i = 1; i &lt;= cnt / 2 + 1; i++) 这个循环是控制上半部分的行数，在这里以5行的菱形作为例子（后续亦如此），因此循环中的cnt / 2 + 1等于3，即先对菱形的上面三行进行处理。1for(j = 1; j &lt;= cnt / 2 + 1 - i; j++) 这个循环是用于输出空格数的，先看下5行菱形的输出结果12345 * *** ***** *** * 由图可知，上半部分三行的空格分别是2、1、0，这个空格数是由总行数和特定行数控制的1for(j = 1; j &lt;= 2 * i - 1; j++) 这部分的循环用于输出符号，由上图可知符号数是1、3、5，在这里我用了2 * i - 1这个条件来实现这个规律菱形下半部分的代码实现采取和菱形上半部分的分析方法，完整代码实现如下：123456789101112131415161718192021222324252627void func(int cnt, char c)&#123; if(cnt % 2 == 0) &#123; printf("sorry, it can't be diamond\n"); return; &#125; int i, j; //菱形上半部分 for(i = 1; i &lt;= cnt / 2 + 1; i++) &#123; for(j = 1; j &lt;= cnt / 2 + 1 - i; j++) printf(" "); for(j = 1; j &lt;= 2 * i - 1; j++) printf("%c", c); printf("\n"); &#125; //菱形下半部分 for(i = 1; i &lt;= cnt / 2; i++) &#123; for(j = 1; j &lt;= i; j++) printf(" "); for(j = 1; j &lt;= cnt - 2 * i; j++) printf("%c", c); printf("\n"); &#125;&#125;]]></content>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[第一篇博客]]></title>
+    <url>%2F2018%2F05%2F30%2F%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[这只是一篇测试用的博客文章，仅以此作为纪念]]></content>
+      <tags>
+        <tag>杂项</tag>
+      </tags>
+  </entry>
+</search>
