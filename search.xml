@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2018%2F09%2F23%2Ftest%2F</url>
-    <content type="text"><![CDATA[12]]></content>
+    <title><![CDATA[归并排序]]></title>
+    <url>%2F2018%2F09%2F24%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[介绍：归并排序是一种采取分而治之的策略排序算法，它的时间复杂度是 O(nlogn) ,归并主要的步骤如下：1、把长度为n的输入序列分成两个长度为n/2的子序列2、对这两个子序列分别采用归并排序3、将排序好的子序列合并成一个最终的排序序列 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include &lt;stdio.h&gt;#define LEN 8int a[LEN] = &#123;1, 5, 8, 2, 4, 3, 9, 6&#125;;void merge(int start, int mid, int end)&#123; int ln = mid - start + 1; int rn = end - mid; int al[ln], ar[rn]; int i, j, k; for(i = 0; i &lt; ln; i++) al[i] = a[start + i]; for(j = 0; j &lt; rn; j++) ar[j] = a[mid + 1 + j]; i = j = 0; k = start; while(i &lt; ln &amp;&amp; j &lt; rn) &#123; if(al[i] &lt; ar[j]) a[k++] = al[i++]; else a[k++] = ar[j++]; &#125; while(i &lt; ln) a[k++] = al[i++]; while(j &lt; rn) a[k++] = ar[j++];&#125;void sort(int start, int end)&#123; int mid; if(start &lt; end) &#123; mid = (start + end) / 2; sort(start, mid); sort(mid + 1, end); merge(start, mid, end); &#125;&#125;int main()&#123; int i; sort(0, LEN - 1); for(i = 0; i &lt; LEN; i++) printf("%d ", a[i]); printf("\n"); return 0;&#125;]]></content>
+      <tags>
+        <tag>C</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Otsu算法]]></title>
