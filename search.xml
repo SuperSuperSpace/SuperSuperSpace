@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[反转字符串]]></title>
+    <url>%2F2019%2F01%2F08%2F%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%2F</url>
+    <content type="text"><![CDATA[介绍：将输入的字符串反转，如输入”hello world”,输出后为”dlrow olleh”。这里采取的方法是分别取字符串的头部和尾部，当头部地址小于尾部时，便交换首尾的值，然后头部地址自增，尾部地址自减，直到头部地址不再小于尾部地址，此时字符串便反转成功 注意：如果用char类型指向的字符串作为参数的话，大部分系统是会报错的,原因是char类型指向的字符串是属于静态常量，没有写权限的 实现代码如下： 1234567891011121314151617181920212223#include &lt;stdio.h&gt;#include &lt;string.h&gt;char* reverse(char* a)&#123; char* head = a; char* tail = a + strlen(a) - 1; char ch; while(head &lt; tail) &#123; ch = *head; *head++ = *tail; *tail-- = ch; &#125; return a;&#125;int main()&#123; char arr[] = "hello world"; printf("%s\n", reverse(arr));&#125;]]></content>
+      <tags>
+        <tag>C</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[归并排序]]></title>
     <url>%2F2018%2F09%2F24%2F%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%2F</url>
     <content type="text"><![CDATA[介绍：归并排序是一种采取分而治之的策略排序算法，它的时间复杂度是 O(nlogn) ,归并主要的步骤如下：1、把长度为n的输入序列分成两个长度为n/2的子序列2、对这两个子序列分别采用归并排序3、将排序好的子序列合并成一个最终的排序序列 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556#include &lt;stdio.h&gt;#define LEN 8int a[LEN] = &#123;1, 5, 8, 2, 4, 3, 9, 6&#125;;void merge(int start, int mid, int end)&#123; int ln = mid - start + 1; int rn = end - mid; int al[ln], ar[rn]; int i, j, k; for(i = 0; i &lt; ln; i++) al[i] = a[start + i]; for(j = 0; j &lt; rn; j++) ar[j] = a[mid + 1 + j]; i = j = 0; k = start; while(i &lt; ln &amp;&amp; j &lt; rn) &#123; if(al[i] &lt; ar[j]) a[k++] = al[i++]; else a[k++] = ar[j++]; &#125; while(i &lt; ln) a[k++] = al[i++]; while(j &lt; rn) a[k++] = ar[j++];&#125;void sort(int start, int end)&#123; int mid; if(start &lt; end) &#123; mid = (start + end) / 2; sort(start, mid); sort(mid + 1, end); merge(start, mid, end); &#125;&#125;int main()&#123; int i; sort(0, LEN - 1); for(i = 0; i &lt; LEN; i++) printf("%d ", a[i]); printf("\n"); return 0;&#125;]]></content>
